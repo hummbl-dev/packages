@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hummbl-dev/packages/raw/main/schemas/release-artifact-receipt-v0.1.json",
+  "title": "Release Artifact Receipt v0.1",
+  "description": "Receipt linking a canonical release artifact to its generated install surfaces. Produced by the Distribution Spine for each release.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "packageId",
+    "version",
+    "artifactUrl",
+    "sha256",
+    "sbomPointer",
+    "provenancePointer",
+    "releaseStatus",
+    "generatedSurfaces"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "v0.1",
+      "description": "Version of the receipt schema."
+    },
+    "receiptId": {
+      "type": "string",
+      "description": "Unique identifier for this receipt.",
+      "minLength": 1
+    },
+    "packageId": {
+      "type": "string",
+      "description": "Identifier of the package as defined in the package identity registry.",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "description": "SemVer-compatible version string of the release.",
+      "minLength": 1
+    },
+    "artifactUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL of the release artifact."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 checksum of the release artifact."
+    },
+    "sbomPointer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pointer (URL) to the Software Bill of Materials for this release."
+    },
+    "provenancePointer": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pointer (URL) to the provenance attestation for this release."
+    },
+    "releaseStatus": {
+      "type": "string",
+      "enum": ["released", "prerelease", "yanked"],
+      "description": "Lifecycle status of the release."
+    },
+    "generatedSurfaces": {
+      "type": "array",
+      "description": "List of downstream install surfaces generated from this release artifact.",
+      "items": {
+        "type": "object",
+        "required": ["surface", "repository", "commitSha"],
+        "additionalProperties": false,
+        "properties": {
+          "surface": {
+            "type": "string",
+            "enum": ["homebrew-tap", "scoop-bucket", "winget-manifests", "nix"],
+            "description": "The install surface type."
+          },
+          "repository": {
+            "type": "string",
+            "description": "Repository hosting the generated surface (e.g. hummbl-dev/homebrew-tap)."
+          },
+          "commitSha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{7,40}$",
+            "description": "Commit SHA of the generated surface update in its repository."
+          }
+        }
+      }
+    }
+  }
+}
