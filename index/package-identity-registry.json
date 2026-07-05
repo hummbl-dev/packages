@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "v0.1",
+  "packages": [
+    {
+      "id": "hummbl",
+      "displayName": "HUMMBL",
+      "description": "HUMMBL core runtime and tooling.",
+      "canonicalSource": "hummbl-dev/packages"
+    },
+    {
+      "id": "basen",
+      "displayName": "BaseN",
+      "description": "BaseN numeric encoding and conversion library.",
+      "canonicalSource": "hummbl-dev/packages"
+    },
+    {
+      "id": "ownward",
+      "displayName": "Ownward",
+      "description": "Ownward ownership and provenance tracking toolkit.",
+      "canonicalSource": "hummbl-dev/packages"
+    }
+  ]
+}
