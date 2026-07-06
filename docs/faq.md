@@ -7,8 +7,8 @@ It is intended as a practical companion to the policy docs, helping package engi
 
 ## What is the canonical source for package identity?
 
-The canonical source of package identity is this repository.  
-It defines the authoritative metadata and release records that downstream surfaces consume.
+Under the Distribution Spine v0.1 proposal, this repository is the **proposed** canonical source of package identity and release metadata.  
+This posture becomes canon only if explicitly adopted by HUMMBL governance.
 
 ---
 
@@ -22,20 +22,26 @@ This repo provides the upstream definition; the surfaces provide user‑facing i
 
 ## What is a release artifact receipt?
 
-A release artifact receipt is the canonical record linking a release artifact to its generated install surfaces.
-It includes the package ID, version, artifact URL, checksum, SBOM/provenance pointers, release status, and generated surfaces.
+Under the v0.1 proposal, a release artifact receipt is a short record that confirms what was published.  
+It documents the version, the artifacts produced, and their checksums.  
+Receipts use schema fields directly:  
+`packageId`, `version`, `artifactUrl`, `sha256`, `sbomPointer`, `provenancePointer`, `releaseStatus`, and `generatedSurfaces`.  
+This posture becomes canon only if explicitly adopted by HUMMBL governance.
 
 ---
 
 ## How are versions determined?
 
-Versions are defined in this repository’s canonical release metadata.
-Downstream surfaces consume those version identifiers; they do not invent their own.
+Under the v0.1 proposal, versions follow the upstream project’s release cadence.  
+This repo does not invent new numbering schemes; it reflects the version identifiers chosen by the project maintainers.  
+Operators ensure consistency across all distribution surfaces.  
+This posture becomes canon only if explicitly adopted by HUMMBL governance.
 
 ---
 
 ### Receipt of Change
 
 - Added `docs/faq.md` answering common distribution spine questions.
+- Preserved v0.1 non‑canon proposal posture throughout.
 - No new terminology introduced.
 - No changes to operator‑authority surfaces.
