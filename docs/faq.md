@@ -39,9 +39,22 @@ This posture becomes canon only if explicitly adopted by HUMMBL governance.
 
 ---
 
+## Can downstream repos patch package metadata directly?
+
+In the proposed model, no. Downstream repos may carry surface‑specific formatting, but package identity and artifact metadata should trace back to the canonical receipt in this repository.
+
+---
+
+## What does non‑canon mean here?
+
+It means the FAQ explains the current proposal and contributor orientation. It does not bind release processes until the governance path explicitly adopts the policy.
+
+---
+
 ### Receipt of Change
 
 - Added `docs/faq.md` answering common distribution spine questions.
+- Added downstream patch and non-canon definition Q&As (salvaged from draft PR #8).
 - Preserved v0.1 non‑canon proposal posture throughout.
 - No new terminology introduced.
 - No changes to operator‑authority surfaces.
